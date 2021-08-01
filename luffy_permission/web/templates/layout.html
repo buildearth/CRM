@@ -95,6 +95,9 @@
             border-left: 2px solid #2F72AB;
         }
     </style>
+	{% block css %}
+	
+	{% endblock %}
 </head>
 <body>
 
@@ -158,11 +161,11 @@
 <div class="pg-body">
     <div class="left-menu">
         <div class="menu-body">
-			{% multi_menu request %}
+
         </div>
     </div>
     <div class="right-body">
-		{% record_list request %}
+
         {% block content %} {% endblock %}
     </div>
 </div>

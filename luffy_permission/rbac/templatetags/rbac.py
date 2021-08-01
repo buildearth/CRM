@@ -2,8 +2,12 @@ import re
 
 from django.template import Library
 from django.conf import settings
+from django.urls import reverse
+from django.http import QueryDict
 
 from collections import OrderedDict
+
+from rbac.service import urls
 
 register = Library()
 
@@ -62,3 +66,14 @@ def has_permission(request, name):
         return True
 
     return False
+
+
+@register.simple_tag
+def memory_url(request, name, *args, **kwargs):
+    """
+    生成带有原搜索条件的url，替代了原来模板中的url
+    :param request:
+    :param name:
+    :return:
+    """
+    return urls.memory_url(request, name, *args, **kwargs)
